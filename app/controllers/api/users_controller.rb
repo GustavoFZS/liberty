@@ -10,8 +10,8 @@ module Api
 
     def signin
       user = User.where(email: params[:email]).last
-      return render_not_found 'achou não' unless user
-      return render_error 'errooou' unless user.valid_password? params[:password]
+      return render_not_found I18n.t 'api.user.not_found' unless user
+      return render_error I18n.t 'api.user.invalid_password' unless user.valid_password? params[:password]
 
       sign_in user
       render json: user

@@ -1,5 +1,6 @@
 class Api::ApiController < ActionController::Base
   skip_before_action :verify_authenticity_token
+  before_action :set_locale
 
   private
 
@@ -9,5 +10,9 @@ class Api::ApiController < ActionController::Base
 
   def render_not_found(message)
     render_error(message, 404)
+  end
+
+  def set_locale
+    I18n.locale = request.headers[:locale] || I18n.default_locale
   end
 end
