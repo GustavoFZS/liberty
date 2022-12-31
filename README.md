@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+A base API project with registration, login and other basic services.
 
 * Ruby version
 
+```
+ruby-2.5.1
+```
+
 * System dependencies
 
-* Configuration
+```
+MongoDB
+```
 
-* Database creation
+* Endpoints
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+(GET)  api/users
+(PUT)  api/users
+(POST) api/users
+(POST) api/users/signin
+```

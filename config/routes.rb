@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     post '/users', to: 'users#signup'
     post '/users/signin', to: 'users#signin'
+    put '/users', to: 'users#update'
+    get '/users', to: 'users#show'
   end
 end

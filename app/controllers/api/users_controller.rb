@@ -1,5 +1,7 @@
 module Api
   class UsersController < ApiController
+    skip_before_action :authenticate_user, only: [:signup, :signin]
+
     def signup
       user = User.new(user_params)
       user.password = params[:password]
@@ -15,6 +17,16 @@ module Api
 
       sign_in user
       render json: user
+    end
+
+    def update
+      return render json: current_user if current_user.update(user_params)
+
+      render_error current_user.errors.full_messages
+    end
+
+    def show
+      render json: User.last
     end
 
     private

@@ -31,6 +31,7 @@
 
 en:
   api:
+    not_authorized: 'User not authorized'
     user:
       not_found: 'User not found'
       invalid_password: 'Invalid password'

@@ -88,6 +88,7 @@ GEM
       responders
       warden (~> 1.2.3)
     digest (3.1.1)
+    easy_diff (1.0.0)
     erubi (1.12.0)
     ffi (1.15.5)
     globalid (1.0.0)
@@ -118,6 +119,14 @@ GEM
     mongoid (7.0.13)
       activemodel (>= 5.1, < 6.2)
       mongo (>= 2.7.0, < 3.0.0)
+    mongoid-compatibility (0.6.0)
+      activesupport
+      mongoid (>= 2.0)
+    mongoid-history (0.8.5)
+      activesupport
+      easy_diff
+      mongoid (>= 3.0)
+      mongoid-compatibility (>= 0.5.1)
     msgpack (1.6.0)
     net-imap (0.2.2)
       digest
@@ -253,6 +262,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mongoid
+  mongoid-history
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7)

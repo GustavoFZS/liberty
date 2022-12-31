@@ -24,6 +24,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bson_ext'
 gem 'devise'
 gem 'mongoid'
+gem 'mongoid-history'
 gem 'rails-i18n'
 
 group :development, :test do

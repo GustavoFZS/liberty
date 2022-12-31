@@ -222,6 +222,7 @@ pt-BR:
       short: "%d de %B, %H:%M"
     pm: ''
   api:
+    not_authorized: 'Acesso negado'
     user:
       not_found: 'Usuário não encontrado'
       invalid_password: 'Email ou senha inválida'
