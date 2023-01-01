@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Api
   class UsersController < ApiController
-    skip_before_action :authenticate_user, only: [:signup, :signin]
+    skip_before_action :authenticate_user, only: %i[signup signin]
 
     def signup
       user = User.new(user_params)
@@ -15,8 +17,7 @@ module Api
       return render_not_found I18n.t 'api.user.not_found' unless user
       return render_error I18n.t 'api.user.invalid_password' unless user.valid_password? params[:password]
 
-      sign_in user
-      render json: user
+      render json: { token: user.jwt_token }
     end
 
     def update
@@ -26,7 +27,7 @@ module Api
     end
 
     def show
-      render json: User.last
+      render json: current_user
     end
 
     private

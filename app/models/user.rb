@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::History::Trackable
+  include ::Tokenizable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -33,11 +36,11 @@ class User
   field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   field :locked_at,       type: Time
 
-  track_history :on => [:email, :encrypted_password, :name], # track title and body fields only, default is :all
-         :modifier_field => nil,                             # adds "belongs_to :modifier" to track who made the change, default is :modifier, set to nil to not create modifier_field
-         :track_create  => true,                             # track document creation, default is true
-         :track_update  => true,                             # track document updates, default is true
-         :track_destroy => true                              # track document destruction, default is true
+  track_history on: %i[email encrypted_password name], # track title and body fields only, default is :all
+                modifier_field: nil, # adds "belongs_to :modifier" to track who made the change, default is :modifier, set to nil to not create modifier_field
+                track_create: true,                             # track document creation, default is true
+                track_update: true,                             # track document updates, default is true
+                track_destroy: true # track document destruction, default is true
 
   ## Confirmable
   # field :confirmation_token,   type: String

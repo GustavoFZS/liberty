@@ -1,11 +1,19 @@
-# config/initializers/mongoid.rb
+# frozen_string_literal: true
+
 module Mongoid
   module Document
     def as_json(options = {})
       attrs = super(options)
-      attrs['id'] = attrs['_id']['$oid']
+      id = { id: attrs['_id'].to_s }
       attrs.delete('_id')
-      attrs
+      id.merge(attrs)
     end
+  end
+end
+
+module BSON
+  class ObjectId
+    alias to_json to_s
+    alias as_json to_s
   end
 end
